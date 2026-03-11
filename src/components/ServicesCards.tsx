@@ -157,60 +157,52 @@ function MobileCard({ badge, title, description, image, iconHtml }: Service) {
   );
 }
 
-// ─── Mobile: carrusel swipeable ───────────────────────────────────────────────
+// ─── Mobile: carrusel con scroll-snap ────────────────────────────────────────
 
 function MobileCarousel({ services }: { services: Service[] }) {
   const [current, setCurrent] = useState(0);
-  const [delta, setDelta] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const startX = useRef(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  function onPointerDown(e: PointerEvent) {
-    startX.current = e.clientX;
-    setDragging(true);
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  function onScroll() {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = (el.firstElementChild as HTMLElement)?.offsetWidth ?? 0;
+    if (cardWidth === 0) return;
+    setCurrent(Math.round(el.scrollLeft / (cardWidth + 16)));
   }
 
-  function onPointerMove(e: PointerEvent) {
-    if (!dragging) return;
-    setDelta(e.clientX - startX.current);
-  }
-
-  function onPointerUp() {
-    if (Math.abs(delta) > 50) {
-      if (delta < 0) setCurrent((c) => Math.min(c + 1, services.length - 1));
-      else setCurrent((c) => Math.max(c - 1, 0));
-    }
-    setDelta(0);
-    setDragging(false);
+  function goTo(index: number) {
+    setCurrent(index);
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement;
+    card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   }
 
   return (
     <div>
-      {/* Carrusel */}
+      {/* Carrusel scroll-snap: w-[88%] deja ver el borde de la siguiente */}
       <div
-        class="overflow-hidden"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-        style={{ touchAction: "pan-y" }}
+        ref={scrollRef}
+        onScroll={onScroll}
+        class="flex gap-4 overflow-x-auto scroll-smooth pl-4"
+        style={{
+          scrollSnapType: "x mandatory",
+          scrollbarWidth: "none",
+          WebkitOverflowScrolling: "touch",
+        } as any}
       >
-        <div
-          class="flex"
-          style={{
-            transform: `translateX(calc(-${current * 100}% + ${delta}px))`,
-            transition: dragging
-              ? "none"
-              : "transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-          }}
-        >
-          {services.map((service, i) => (
-            <div key={i} class="w-full flex-shrink-0 px-4">
-              <MobileCard {...service} />
-            </div>
-          ))}
-        </div>
+        {services.map((service, i) => (
+          <div
+            key={i}
+            class="w-[88%] flex-shrink-0"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <MobileCard {...service} />
+          </div>
+        ))}
+        {/* Espaciador final para que la última card pueda snappear */}
+        <div class="w-4 flex-shrink-0" aria-hidden="true" />
       </div>
 
       {/* Navegación: dots + contador */}
@@ -220,7 +212,7 @@ function MobileCarousel({ services }: { services: Service[] }) {
             <button
               key={i}
               type="button"
-              onClick={() => setCurrent(i)}
+              onClick={() => goTo(i)}
               aria-label={`Ver servicio ${i + 1}`}
               class={[
                 "h-1.5 rounded-full bg-cyan-500 transition-all duration-300",

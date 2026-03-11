@@ -55,10 +55,12 @@ const schemaOrg = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Anti-FOUC: aplica .dark antes del primer paint si el usuario lo eligió -->
+    <!-- Anti-FOUC: aplica .dark antes del primer paint según preferencia guardada o del sistema -->
     <script is:inline>
       (function () {
-        if (localStorage.getItem("theme") === "dark") {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
           document.documentElement.classList.add("dark");
         }
       })();
