@@ -59,7 +59,9 @@ const schemaOrg = {
     <script is:inline>
       (function () {
         const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
         if (stored === "dark" || (!stored && prefersDark)) {
           document.documentElement.classList.add("dark");
         }
@@ -95,8 +97,7 @@ const schemaOrg = {
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/NicrosilLogo.png" />
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
