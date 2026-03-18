@@ -11,9 +11,9 @@ interface Props {
 
 const {
   title = "Nicrosil | Desarrollo Web de Clase Mundial",
-  description = "Agencia de desarrollo web. Sitios Astro de alto rendimiento, SEO técnico y optimización continua. Tu presencia digital, cultivada con precisión.",
+  description = "Necesitas más que una página web. Necesitas una presencia digital que crezca contigo. Sitios rápidos, diseño con intención y optimización continua.",
   canonical = Astro.url.href,
-  ogImage = "/NicrosilLogo.png",
+  ogImage = "/altorendimiento.jpg",
 } = Astro.props;
 
 const schemaOrg = {
@@ -100,7 +100,7 @@ const schemaOrg = {
     <link rel="icon" type="image/png" href="/NicrosilLogo.png" />
 
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
   </head>
   <body>
     <slot />
