@@ -38,8 +38,9 @@ import { CountUp } from "@components/ui/CountUp.tsx";
       <p
         class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
-        Años de experiencia
+        Años desarrollando
       </p>
+      <p class="text-[11px] text-zinc-400 dark:text-zinc-500">webs profesionales</p>
     </div>
 
     <!-- 100 Lighthouse -->
@@ -54,9 +55,25 @@ import { CountUp } from "@components/ui/CountUp.tsx";
       >
         Lighthouse score
       </p>
+      <p class="text-[11px] text-zinc-400 dark:text-zinc-500">velocidad y SEO perfectos</p>
     </div>
 
-    <!-- 100% satisfacción -->
+    <!-- Clientes atendidos -->
+    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
+      <p
+        class="font-display text-3xl font-bold text-zinc-800 tabular-nums md:text-4xl dark:text-zinc-50"
+      >
+        <CountUp client:visible initial={0} final={10} duration={1200} />+
+      </p>
+      <p
+        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
+      >
+        Clientes atendidos
+      </p>
+      <p class="text-[11px] text-zinc-400 dark:text-zinc-500">México y Estados Unidos</p>
+    </div>
+
+    <!-- Entrega puntual -->
     <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
       <p
         class="font-display text-3xl font-bold text-zinc-800 tabular-nums md:text-4xl dark:text-zinc-50"
@@ -66,22 +83,9 @@ import { CountUp } from "@components/ui/CountUp.tsx";
       <p
         class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
-        Satisfacción
+        Entrega a tiempo
       </p>
-    </div>
-
-    <!-- USA estándares -->
-    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
-      <p
-        class="font-display text-3xl font-bold text-zinc-800 md:text-4xl dark:text-zinc-50"
-      >
-        USA
-      </p>
-      <p
-        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
-      >
-        Estándares aplicados
-      </p>
+      <p class="text-[11px] text-zinc-400 dark:text-zinc-500">sin sorpresas ni retrasos</p>
     </div>
   </div>
 </section>
