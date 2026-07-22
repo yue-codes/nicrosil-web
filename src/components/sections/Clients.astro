@@ -1,0 +1,118 @@
+---
+/**
+ * Clients — carrusel de logos de marcas reales con las que se ha trabajado.
+ * Se embebe dentro del Hero, debajo del slider de portfolio. Cada logo
+ * enlaza al sitio en vivo de esa marca (target="_blank").
+ *
+ * El track se duplica una vez para lograr un loop infinito sin salto visual;
+ * la copia duplicada se marca aria-hidden y no es enfocable por teclado.
+ *
+ * Para agregar una marca nueva: añade un objeto al array `clients` con su
+ * logo en /public y la URL de su sitio.
+ */
+const clients = [
+  {
+    name: "Trasciende Gym",
+    hint: "Gym & Fitness",
+    href: "https://trasciendegym.com",
+    logo: "/logotrasciende.svg",
+    // El SVG viene con fondo cuadrado sólido; se recorta a círculo en el markup.
+    round: true,
+  },
+  {
+    name: "Nutrióloga Yanely",
+    hint: "Nutrición",
+    href: "https://nutriyanelyg.com/",
+    logo: "/logoyanely.svg",
+  },
+  {
+    name: "Magical Cleaning",
+    hint: "Limpieza Profesional",
+    href: "https://magical-cleaningservice.com",
+    logo: "/logomagicalcleaning.png",
+  },
+];
+
+const track = [...clients, ...clients];
+---
+
+<div class="w-full overflow-hidden" aria-label="Marcas con las que he trabajado">
+  <div class="marquee-mask relative">
+    <div class="marquee-track flex w-max items-center gap-16">
+      {
+        track.map(({ name, hint, href, logo, round }, i) => {
+          const isDuplicate = i >= clients.length;
+          return (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Visitar el sitio de ${name}`}
+              aria-label={`Visitar el sitio de ${name}`}
+              aria-hidden={isDuplicate ? "true" : undefined}
+              tabindex={isDuplicate ? -1 : undefined}
+              class={
+                round
+                  ? "group flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full"
+                  : "group flex h-16 w-32 shrink-0 items-center justify-center"
+              }
+            >
+              <img
+                src={logo}
+                alt={isDuplicate ? "" : `${name} — ${hint}`}
+                loading="lazy"
+                class={
+                  round
+                    ? "h-full w-full object-cover opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                    : "max-h-12 w-auto object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                }
+              />
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
+  .marquee-track {
+    animation: marquee 22s linear infinite;
+  }
+
+  .marquee-mask:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

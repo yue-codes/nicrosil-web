@@ -1,5 +1,6 @@
 ---
 import HeroSlider from "@components/interactive/HeroSlider.tsx";
+import Clients from "@components/sections/Clients.astro";
 import PulseDot from "@components/ui/PulseDot.astro";
 import Arrow from "@icons/Arrow.astro";
 
@@ -18,6 +19,14 @@ import Arrow from "@icons/Arrow.astro";
 const slides = [
   {
     src: "/web1.webp",
+    alt: "Nutrióloga Yanely — sitio web desarrollado por Nicrosil",
+    label: "Nutrióloga Yanely",
+    category: "Nutrición",
+    bgLight: "#F3DCC9", // crema cálido, tono de marca del sitio
+    bgDark: "#2A1420",
+  },
+  {
+    src: "/web2.webp",
     alt: "Trasciende Gym — sitio web desarrollado por Nicrosil",
     label: "Trasciende Gym",
     category: "Gym & Fitness",
@@ -25,7 +34,7 @@ const slides = [
     bgDark: "#0D3828",
   },
   {
-    src: "/web2.webp",
+    src: "/web3.webp",
     alt: "Magical Cleaning — sitio web desarrollado por Nicrosil",
     label: "Magical Cleaning",
     category: "Limpieza Profesional",
@@ -116,5 +125,10 @@ const slides = [
     </div>
 
     <HeroSlider slides={slides} client:load />
+  </div>
+
+  <!-- Marcas con las que he trabajado — animación 5 -->
+  <div class="animate-fade-up mt-14 w-full max-w-2xl delay-300">
+    <Clients />
   </div>
 </section>
