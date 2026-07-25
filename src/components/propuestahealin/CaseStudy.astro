@@ -1,0 +1,74 @@
+---
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import Arrow from "@icons/Arrow.astro";
+
+const stats = [
+  { value: "+5", label: "años de experiencia" },
+  { value: "+500", label: "pacientes atendidos" },
+  { value: "5.0", label: "calificación promedio" },
+];
+---
+
+<section
+  id="caso-yaneli"
+  class="bg-white py-24 dark:bg-[#050705]"
+  aria-labelledby="caso-yaneli-heading"
+>
+  <div class="mx-auto max-w-6xl px-6">
+    <SectionHeader
+      eyebrow="No es una promesa, es un hecho"
+      id="caso-yaneli-heading"
+      description="Ella te recomendó conmigo porque ya vio el resultado de cerca. Este es el sitio real que le construí — puedes entrar ahora mismo."
+      eyebrowStyle="color: #5B6B4F"
+    >
+      El sitio de <span class="text-[#5B6B4F] dark:text-[#9CAE87]">Yaneli</span> ya
+      está funcionando
+    </SectionHeader>
+
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+      <!-- Imagen del sitio real -->
+      <div class="order-2 lg:order-1">
+        <img
+          src="/web1.webp"
+          alt="Sitio web real de la Nutrióloga Yanely García, desarrollado por Nicrosil"
+          loading="lazy"
+          class="mx-auto h-auto w-full max-w-lg"
+        />
+      </div>
+
+      <!-- Detalles -->
+      <div class="order-1 text-center lg:order-2 lg:text-left">
+        <p class="mx-auto mb-8 max-w-md text-base leading-relaxed text-zinc-600 lg:mx-0 dark:text-zinc-300">
+          Yaneli llegó con el mismo reto que tienes tú hoy: mucho contenido de
+          valor, ninguna casa central que lo convirtiera en citas. Hoy su
+          sitio agenda pacientes, vende sus ebooks y la posiciona en Google
+          como la referencia de nutrición que ya es.
+        </p>
+
+        <!-- Métricas reales -->
+        <div class="mb-8 grid grid-cols-3 gap-4">
+          {
+            stats.map(({ value, label }) => (
+              <div class="text-center lg:text-left">
+                <p class="font-display text-2xl font-extrabold text-zinc-900 md:text-3xl dark:text-zinc-50">
+                  {value}
+                </p>
+                <p class="text-xs text-zinc-400 dark:text-zinc-500">{label}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <a
+          href="https://nutriyanelyg.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 rounded-xl bg-[#5B6B4F] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:brightness-110"
+        >
+          Visitar nutriyanelyg.com
+          <Arrow class="transition-transform group-hover:translate-x-0.5" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

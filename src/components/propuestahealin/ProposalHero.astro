@@ -1,0 +1,81 @@
+---
+import PulseDot from "@components/ui/PulseDot.astro";
+import Arrow from "@icons/Arrow.astro";
+---
+
+<section
+  id="inicio"
+  class="flex flex-col items-center px-4 pt-32 pb-20"
+  aria-label="Inicio"
+>
+  <!-- Badge de reconocimiento -->
+  <div class="animate-fade-up mb-6 flex justify-center">
+    <span
+      class="flex items-center gap-1.5 rounded-full border border-[#5B6B4F]/25 bg-[#5B6B4F]/10 px-4 py-1.5 text-xs font-medium text-[#4B5A3F] dark:border-[#9CAE87]/25 dark:bg-[#9CAE87]/10 dark:text-[#B7C7A3]"
+    >
+      <PulseDot color="green" />
+      Hecho a la medida para @healin.mx
+    </span>
+  </div>
+
+  <div class="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+    <!-- Columna izquierda: mensaje -->
+    <div class="text-center lg:text-left">
+      <h1
+        class="animate-fade-up font-display text-4xl leading-[1.15] font-extrabold text-zinc-900 md:text-5xl dark:text-zinc-50"
+      >
+        Viviana, así se sentiría<br />
+        <span
+          class="bg-linear-to-r from-[#5B6B4F] to-[#3F4A35] bg-clip-text text-transparent dark:from-[#9CAE87] dark:to-[#C7D6B4]"
+        >
+          tu marca Heal in en internet.
+        </span>
+      </h1>
+
+      <p
+        class="animate-fade-up mt-6 max-w-lg text-base leading-relaxed text-zinc-600 delay-100 md:text-lg lg:mx-0 dark:text-zinc-300"
+      >
+        Hoy tu mejor contenido vive repartido entre Instagram, TikTok y
+        YouTube. Te propongo darle una casa propia: un sitio que agende tus
+        citas, muestre tus servicios y tu tienda, y te haga ver tan
+        profesional como ya eres.
+      </p>
+
+      <div
+        class="animate-fade-up mx-auto mt-8 flex max-w-md flex-wrap justify-center gap-3 delay-200 lg:mx-0 lg:justify-start"
+      >
+        <a
+          href="#propuesta"
+          class="group relative overflow-hidden rounded-xl bg-linear-to-r from-[#5B6B4F] to-[#3F4A35] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#5B6B4F]/25 transition-all hover:shadow-[#5B6B4F]/40 hover:brightness-110"
+        >
+          <span class="relative flex items-center gap-2">
+            Ver la propuesta
+            <Arrow class="transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </a>
+        <a
+          href="#caso-yaneli"
+          class="rounded-xl border border-[#5B6B4F]/25 bg-white px-6 py-3.5 text-sm font-semibold text-zinc-700 shadow-sm transition-all hover:border-[#5B6B4F]/40 hover:bg-[#5B6B4F]/5 dark:border-white/10 dark:bg-white/5 dark:text-zinc-200"
+        >
+          Ver un caso real
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna derecha: su propio contenido, como prueba de que esto es 100% para ella -->
+    <div class="animate-fade-up flex justify-center delay-300">
+      <div
+        class="w-full max-w-[280px] overflow-hidden rounded-[2rem] border-8 border-white shadow-2xl dark:border-zinc-800"
+      >
+        <img
+          src="/propuesta/viviana-hero.png"
+          alt="Nutrióloga Viviana García — contenido real de @healin.mx"
+          width={996}
+          height={1238}
+          loading="eager"
+          class="block h-auto w-full"
+        />
+      </div>
+    </div>
+  </div>
+</section>

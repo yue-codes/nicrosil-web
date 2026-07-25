@@ -1,0 +1,28 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ProposalHeader from "@components/propuestahealin/ProposalHeader.astro";
+import ProposalHero from "@components/propuestahealin/ProposalHero.astro";
+import Recognition from "@components/propuestahealin/Recognition.astro";
+import ContentGallery from "@components/propuestahealin/ContentGallery.astro";
+import CaseStudy from "@components/propuestahealin/CaseStudy.astro";
+import Solution from "@components/propuestahealin/Solution.astro";
+import Packages from "@components/propuestahealin/Packages.astro";
+import ProposalCTA from "@components/propuestahealin/ProposalCTA.astro";
+---
+
+<Layout
+  title="Propuesta para Heal in | Nicrosil"
+  description="Propuesta de sitio web a la medida para Heal in — Nutrióloga Viviana García."
+  noindex={true}
+>
+  <ProposalHeader />
+  <main>
+    <ProposalHero />
+    <Recognition />
+    <ContentGallery />
+    <CaseStudy />
+    <Solution />
+    <Packages />
+    <ProposalCTA />
+  </main>
+</Layout>

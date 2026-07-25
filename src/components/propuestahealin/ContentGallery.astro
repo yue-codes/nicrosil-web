@@ -1,0 +1,41 @@
+---
+/**
+ * ContentGallery — mosaico con capturas reales de @healin.mx.
+ * Puramente visual: refuerza que la propuesta se construyó mirando
+ * su contenido real, sin necesidad de repetirlo en texto.
+ */
+const photos = [
+  { src: "/propuesta/viviana-slogan.png", rotate: "-rotate-2", alt: "Contenido real de @healin.mx" },
+  { src: "/propuesta/viviana-tono.png", rotate: "rotate-2", alt: "Contenido real de @healin.mx" },
+];
+---
+
+<section
+  aria-label="Contenido real de Heal in"
+  class="overflow-hidden bg-[#F5F7F1] py-20 dark:bg-[#0A0F08]"
+>
+  <div class="mx-auto max-w-4xl px-6">
+    <p
+      class="mb-12 text-center text-xs font-semibold tracking-[0.2em] text-[#5B6B4F] uppercase dark:text-[#9CAE87]"
+    >
+      Tu contenido, tal cual es
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+      {
+        photos.map(({ src, rotate, alt }) => (
+          <div
+            class={`w-48 shrink-0 overflow-hidden rounded-2xl border-4 border-white shadow-xl transition-transform duration-300 hover:rotate-0 hover:scale-105 sm:w-64 ${rotate}`}
+          >
+            <img
+              src={src}
+              alt={alt}
+              loading="lazy"
+              class="block h-auto w-full"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

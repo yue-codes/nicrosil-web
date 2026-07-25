@@ -1,0 +1,35 @@
+---
+/**
+ * Recognition — franja que demuestra que la propuesta se hizo mirando
+ * su contenido real, no una plantilla genérica de "nutrióloga".
+ */
+const channels = [
+  { label: "@healin.mx", hint: "Instagram" },
+  { label: "Heal in", hint: "TikTok" },
+  { label: "@byhealin", hint: "YouTube" },
+  { label: "Oaxaca de Juárez", hint: "Consultorio" },
+];
+---
+
+<section
+  aria-label="Reconocimiento de marca"
+  class="border-y border-[#5B6B4F]/10 bg-[#F5F7F1] py-8 dark:border-[#9CAE87]/10 dark:bg-[#0A0F08]"
+>
+  <div class="mx-auto max-w-4xl px-6">
+    <p
+      class="mb-5 text-center text-xs font-semibold tracking-[0.2em] text-[#5B6B4F] uppercase dark:text-[#9CAE87]"
+    >
+      Esto ya vimos de ti
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      {
+        channels.map(({ label, hint }) => (
+          <span class="flex items-center gap-2 rounded-full border border-[#5B6B4F]/15 bg-white px-4 py-2 text-sm text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-200">
+            <span class="font-semibold">{label}</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-500">{hint}</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>

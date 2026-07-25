@@ -1,0 +1,111 @@
+---
+import SectionHeader from "@components/ui/SectionHeader.astro";
+
+const features = [
+  {
+    title: "SEO continuo",
+    description: "No se trabaja una vez y se olvida — se cuida mes con mes.",
+    iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`,
+  },
+  {
+    title: "Cambios ilimitados",
+    description: "Cualquier ajuste que necesites, se hace. Sin costo por movimiento.",
+    iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3.5-7.1"/><path d="M21 3v6h-6"/></svg>`,
+  },
+  {
+    title: "Tu sitio siempre va a crecer",
+    description: "Heal in evoluciona y tu web evoluciona con ella, no se queda congelada.",
+    iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/></svg>`,
+  },
+  {
+    title: "Facilidad de pago",
+    description: "En 4 quincenas, sin intereses, para que no sea un golpe único.",
+    iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>`,
+  },
+  {
+    title: "Tecnología de punta",
+    description: "Nada de plantillas de WordPress o Wix. Un sitio construido a la medida, rápido y optimizado desde cero.",
+    iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-2 8h7l-9 12 2-8H4l9-12z"/></svg>`,
+  },
+];
+---
+
+<section
+  class="bg-[#FAFAF7] py-24 dark:bg-[#07090A]"
+  aria-labelledby="paquetes-heading"
+>
+  <div class="mx-auto max-w-6xl px-6">
+    <SectionHeader
+      eyebrow="Inversión"
+      id="paquetes-heading"
+      description="Un estimado honesto. El número final lo afinamos juntos según lo que tu sitio necesite."
+      eyebrowStyle="color: #5B6B4F"
+    >
+      Lo que costaría<br class="hidden sm:block" />
+      <span class="text-[#5B6B4F] dark:text-[#9CAE87]">darle a Heal in su casa</span>
+    </SectionHeader>
+
+    <!-- Card única de inversión -->
+    <div class="relative mx-auto max-w-xl overflow-hidden rounded-3xl border-2 border-[#5B6B4F]/30 bg-white p-8 shadow-xl shadow-[#5B6B4F]/10 sm:p-10 dark:border-[#9CAE87]/25 dark:bg-white/5">
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-0 top-0 h-1.5 bg-linear-to-r from-[#5B6B4F] via-[#4A7B8C] to-[#5B6B4F]"
+      />
+
+      <div class="text-center">
+        <p class="mb-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+          Sitio completo para Heal in
+        </p>
+        <p class="font-display mb-1 text-4xl font-extrabold text-zinc-900 sm:text-5xl dark:text-zinc-50">
+          $10,000 – $15,000
+          <span class="block text-sm font-medium text-zinc-400 sm:inline"> MXN</span>
+        </p>
+        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+          Es lo que estimo hoy — lo hablamos con calma para ajustarlo a lo que
+          realmente necesitas.
+        </p>
+
+        <p class="mx-auto mt-5 inline-flex items-center gap-2 rounded-full bg-[#5B6B4F]/10 px-4 py-2 text-sm font-semibold text-[#4B5A3F] dark:bg-[#9CAE87]/15 dark:text-[#B7C7A3]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+          No pagas nada hasta aprobar el primer avance
+        </p>
+      </div>
+
+      <div class="my-8 h-px w-full bg-zinc-100 dark:bg-white/8" />
+
+      <p class="mb-6 text-center text-xs font-semibold tracking-[0.15em] text-[#5B6B4F] uppercase dark:text-[#9CAE87]">
+        Y esto ya está incluido
+      </p>
+
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {
+          features.map(({ title, description, iconHtml }, i) => (
+            <div
+              class={`flex items-start gap-3 ${
+                i === features.length - 1 ? "sm:col-span-2" : ""
+              }`}
+            >
+              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#5B6B4F]/10 text-[#5B6B4F] dark:bg-[#9CAE87]/15 dark:text-[#9CAE87]">
+                <Fragment set:html={iconHtml} />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                  {title}
+                </p>
+                <p class="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Nota de descuento — sin cifra, se detalla en conversación directa -->
+    <p class="mt-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
+      ✨ Por venir recomendada de Yaneli, aplica un descuento especial —
+      te lo comento directo por WhatsApp.
+    </p>
+  </div>
+</section>

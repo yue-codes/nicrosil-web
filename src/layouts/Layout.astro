@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   description = "Necesitas más que una página web. Necesitas una presencia digital que crezca contigo. Sitios rápidos, diseño con intención y optimización continua.",
   canonical = Astro.url.href,
   ogImage = "/altorendimiento.jpg",
+  noindex = false,
 } = Astro.props;
 
 const schemaOrg = {
@@ -72,7 +74,10 @@ const schemaOrg = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow"}
+    />
     <meta name="author" content="Nicrosil" />
 
     <!-- Geo SEO (Oaxaca → global) -->
