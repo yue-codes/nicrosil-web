@@ -18,6 +18,8 @@ const {
   noindex = false,
 } = Astro.props;
 
+const absoluteOgImage = new URL(ogImage, Astro.site).href;
+
 const schemaOrg = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -91,7 +93,7 @@ const schemaOrg = {
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:site_name" content="Nicrosil" />
 
@@ -99,7 +101,7 @@ const schemaOrg = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={absoluteOgImage} />
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/NicrosilLogo.png" />
