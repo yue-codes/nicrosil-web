@@ -8,6 +8,8 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
+  themeStorageKey?: string;
+  followSystemTheme?: boolean;
 }
 
 const {
@@ -16,6 +18,8 @@ const {
   canonical = Astro.url.href,
   ogImage = "/altorendimiento.jpg",
   noindex = false,
+  themeStorageKey = "theme",
+  followSystemTheme = true,
 } = Astro.props;
 
 const absoluteOgImage = new URL(ogImage, Astro.site).href;
@@ -60,12 +64,12 @@ const schemaOrg = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Anti-FOUC: aplica .dark antes del primer paint según preferencia guardada o del sistema -->
-    <script is:inline>
+    <script is:inline define:vars={{ themeStorageKey, followSystemTheme }}>
       (function () {
-        const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
+        const stored = localStorage.getItem(themeStorageKey);
+        const prefersDark =
+          followSystemTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
         if (stored === "dark" || (!stored && prefersDark)) {
           document.documentElement.classList.add("dark");
         }

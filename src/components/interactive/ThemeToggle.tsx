@@ -1,6 +1,16 @@
 import { useState, useEffect } from "preact/hooks";
 
-export default function ThemeToggle() {
+interface Props {
+  /** localStorage key used to persist the choice — lets a page keep its own theme separate from the rest of the site. */
+  storageKey?: string;
+  /** Whether to fall back to the OS preference when nothing is stored yet. */
+  followSystemTheme?: boolean;
+}
+
+export default function ThemeToggle({
+  storageKey = "theme",
+  followSystemTheme = true,
+}: Props) {
   const [dark, setDark] = useState(() =>
     typeof document !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -10,20 +20,22 @@ export default function ThemeToggle() {
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme");
+    const stored = localStorage.getItem(storageKey);
     if (stored) {
       setDark(stored === "dark");
-    } else {
+    } else if (followSystemTheme) {
       setDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } else {
+      setDark(false);
     }
-  }, []);
+  }, [storageKey, followSystemTheme]);
 
   function toggle() {
     const next = !dark;
     setDark(next);
     setAngle((a) => a + 180);
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    localStorage.setItem(storageKey, next ? "dark" : "light");
   }
 
   // Glow: amarillo-cálido para el sol, azul-frío para la luna

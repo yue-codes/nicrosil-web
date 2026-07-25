@@ -3,6 +3,7 @@
  * ProposalHeader — barra superior mínima para la propuesta de Heal in.
  * Sin navegación al sitio principal: la atención debe quedarse en esta página.
  */
+import ThemeToggle from "@components/interactive/ThemeToggle.tsx";
 ---
 
 <header
@@ -33,11 +34,19 @@
       Propuesta para Heal in
     </span>
 
-    <a
-      href="#contacto"
-      class="rounded-full bg-[#5B6B4F] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all hover:brightness-110"
-    >
-      Hablemos
-    </a>
+    <div class="flex items-center gap-2">
+      <ThemeToggle
+        client:only="preact"
+        storageKey="healin-theme"
+        followSystemTheme={false}
+      />
+
+      <a
+        href="#contacto"
+        class="rounded-full bg-[#5B6B4F] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all hover:brightness-110"
+      >
+        Hablemos
+      </a>
+    </div>
   </div>
 </header>
